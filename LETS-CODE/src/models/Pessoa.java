@@ -29,64 +29,40 @@ Completude das funcionalidades Aplicação das regras de negócio Modelagem de d
  */
 
 
-import java.util.ArrayList;
+
 
 
 public abstract class Pessoa {
 
-    private String identicador;
-
+    private String identificador;
     private String nome;
 
-    private ArrayList<Conta> contas = new ArrayList<Conta>();
-    //TODO: ENCAPSULAMENTO
+    //private ArrayList<Conta> contas = new ArrayList<Conta>();
 
-    /**
-     * @return String return the nome
-     */
+
     public String getNome() {
         return nome;
     }
 
-    /**
-     * @param nome the nome to set
-     */
+
     public void setNome(String nome) {
         this.nome = nome;
     }
 
 
-
-    /**
-     * @return String return the identicador
-     */
-    public String getIdenticador() {
-        return identicador;
+    public String getIdentificador() {
+        return identificador;
     }
 
-    /**
-     * @param identicador the identicador to set
-     */
-    public void setIdenticador(String identicador) {
-        this.identicador = identicador;
+
+    public void setIdentificador(String identificador) {
+        this.identificador = identificador;
     }
 
-    public void adicionarConta(){}
-
-
-
-    /**
-     * @return ArrayList<Conta> return the contas
-     */
-    public ArrayList<Conta> getContas() {
-        return contas;
+    public Pessoa (String nome, String identificador){
+        this.nome = nome;
+        this.identificador = identificador;
     }
 
-    /**
-     * @param contas the contas to set
-     */
-    public void setContas(ArrayList<Conta> contas) {
-        this.contas = contas;
-    }
 
 }

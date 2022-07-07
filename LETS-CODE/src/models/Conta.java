@@ -1,14 +1,13 @@
 package models;
 
 import java.math.BigDecimal;
+import java.util.Random;
 
 public abstract class Conta {
 
     private String numeroConta;
-    
     private Pessoa cliente;
-
-    private BigDecimal saldo;
+    BigDecimal saldo = BigDecimal.ZERO;
 
     //TODO: ENCAPSULAMENTO
     
@@ -17,7 +16,8 @@ public abstract class Conta {
      * @return int return the numeroConta
      */
     public String getNumeroConta() {
-        return numeroConta;
+
+        return this.numeroConta;
     }
 
     /**
@@ -41,40 +41,29 @@ public abstract class Conta {
         this.cliente = cliente;
     }
 
-    
 
-    /**
-     * @param saldo the saldo to set
-     */
-    public void setSaldo(BigDecimal saldo) {
-        this.saldo = saldo;
-    }
 
-    //Abrir conta 
+    //Abrir conta
 
     public Conta(){
 
     }
-    
-    public void sacar(BigDecimal valor){
 
-    }
-    public void depositar(BigDecimal valor){
-
-    }
-
-    public void transferir(BigDecimal valor, Conta contaDestino){
-
-    }
-
-    /**
-     * @return BigDecimal return the saldo
-     */
     public BigDecimal consultarSaldo() {
         return saldo;
     }
 
- 
+    public void gerarNumeroConta(){
+        Random rand = new Random();
+        int maximo = 9999;
+        int numeroGerado = rand.nextInt(maximo);
+        this.numeroConta = String.valueOf(numeroGerado);
+
+    }
+
+
+
+
     
 
 
