@@ -9,7 +9,6 @@ public class ContaInvestimento extends Conta {
         this.gerarNumeroConta();
     }
 
-    // TODO: Aplicar investimento (e talvez já render logo?)
     public void aplicar(BigDecimal valor) {
         this.saldo = this.saldo.add(valor);
         render();
@@ -20,13 +19,16 @@ public class ContaInvestimento extends Conta {
 
     }
 
-    // TODO: Cliente PJ rende 2% a mais (que alguma outra coisa)
     public void render() {
+        double taxa = 0.05;
+        if (this.getCliente().getClass().equals(PessoaJuridica.class)) {
+            taxa += 0.02;
+        }
         System.out.println("==========");
         System.out.println("RENDIMENTO");
         System.out.println(this);
         System.out.println("Valor antes do rendimento: " + this.saldo);
-        this.saldo = this.saldo.multiply(BigDecimal.valueOf(1.02));
+        this.saldo = this.saldo.multiply(BigDecimal.valueOf(1+taxa));
         System.out.println("Valor depois do rendimento: " + this.saldo);
     }
 
