@@ -5,5 +5,7 @@ public class PessoaJuridica extends Pessoa {
         super(nome, cnpj);
     }
 
-    // TODO: Fazer toString com os dados do cliente PJ
+    public String toString(){
+        return "Nome :" + this.getNome() + "\nCNPJ :" + this.getIdentificador();
+    }
 }

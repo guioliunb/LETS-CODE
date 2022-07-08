@@ -11,7 +11,8 @@ public class ContaInvestimento extends Conta {
 
     // TODO: Aplicar investimento (e talvez já render logo?)
     public void aplicar(BigDecimal valor) {
-
+        this.saldo = this.saldo.add(valor);
+        render();
     }
 
     // TODO: Checar se dono das duas contas é o mesmo antes de fazer o resgate
@@ -21,8 +22,15 @@ public class ContaInvestimento extends Conta {
 
     // TODO: Cliente PJ rende 2% a mais (que alguma outra coisa)
     public void render() {
-
+        System.out.println("==========");
+        System.out.println("RENDIMENTO");
+        System.out.println(this);
+        System.out.println("Valor antes do rendimento: " + this.saldo);
+        this.saldo = this.saldo.multiply(BigDecimal.valueOf(1.02));
+        System.out.println("Valor depois do rendimento: " + this.saldo);
     }
 
-    // TODO: Fazer toString com os dados da conta investimento
+    public String toString(){
+        return "Conta Investimento:" + this.getNumeroConta() + "\n-Cliente: " + this.getCliente().getNome();
+    }
 }

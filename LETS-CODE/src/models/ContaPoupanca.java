@@ -42,5 +42,7 @@ public class ContaPoupanca extends Conta implements ContaCompleta {
         }
     }
 
-    // TODO: Fazer toString com os dados da conta poupança
+    public String toString(){
+        return "Conta Poupança:" + this.getNumeroConta() + "\n-Cliente: " + this.getCliente().getNome();
+    }
 }

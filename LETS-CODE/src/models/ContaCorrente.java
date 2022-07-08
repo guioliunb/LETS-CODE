@@ -57,5 +57,7 @@ public class ContaCorrente extends Conta implements ContaCompleta {
         }
     }
 
-    // TODO: Fazer toString com os dados da conta corrente
+    public String toString(){
+        return "Conta Correntes:" + this.getNumeroConta() + "\n-Cliente: " + this.getCliente().getNome();
+    }
 }
