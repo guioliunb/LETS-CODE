@@ -1,7 +1,7 @@
 package models;
 
 public class PessoaJuridica extends Pessoa {
-    public PessoaJuridica(String nome, String identificador){
-        super(nome, identificador);
+    public PessoaJuridica(String nome, String cnpj) {
+        super(nome, cnpj);
     }
 }
