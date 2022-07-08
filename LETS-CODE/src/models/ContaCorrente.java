@@ -10,6 +10,13 @@ public class ContaCorrente extends Conta implements ContaCompleta {
     }
 
     public void sacar(BigDecimal valor) {
+        BigDecimal taxa;
+        if (this.getCliente().getClass().equals(PessoaJuridica.class)) {
+            taxa = BigDecimal.valueOf(0.005);
+        } else {
+            taxa = BigDecimal.ZERO;
+        }
+        valor = valor.multiply(taxa.add(BigDecimal.ONE));
         if (this.saldo.compareTo(valor) >= 0) {
             this.saldo = this.saldo.subtract(valor);
         } else {
@@ -21,9 +28,16 @@ public class ContaCorrente extends Conta implements ContaCompleta {
         this.saldo = this.saldo.add(valor);
     }
 
-    // Transferência apenas para corrente e poupança
+    // Transferência apenas para corrente e poupança (ContaCompleta)
     // Usar investir() para conta investimento
     public void transferir(BigDecimal valor, ContaCompleta contaDestino) {
+        BigDecimal taxa;
+        if (this.getCliente().getClass().equals(PessoaJuridica.class)) {
+            taxa = BigDecimal.valueOf(0.005);
+        } else {
+            taxa = BigDecimal.ZERO;
+        }
+        valor = valor.multiply(taxa.add(BigDecimal.ONE));
         if (this.saldo.compareTo(valor) >= 0) {
             this.saldo = this.saldo.subtract(valor);
             contaDestino.depositar(valor);
@@ -32,12 +46,16 @@ public class ContaCorrente extends Conta implements ContaCompleta {
         }
     }
 
+    // Transferência apenas para corrente e poupança (ContaCompleta)
+    // Usar investir() para conta investimento
     public void investir(BigDecimal valor, ContaInvestimento contaDestino) {
         if (this.saldo.compareTo(valor) >= 0) {
             this.saldo = this.saldo.subtract(valor);
-            contaDestino.saldo = contaDestino.saldo.add(valor);
+            contaDestino.aplicar(valor);
         } else {
             System.out.println("Saldo insuficiente.");
         }
     }
+
+    // TODO: Fazer toString com os dados da conta corrente
 }
