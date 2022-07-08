@@ -35,5 +35,17 @@ public class Aplicacao {
         contaJao.investir(BigDecimal.valueOf(120), investimentoJao);
         investimentoCorp.aplicar(BigDecimal.valueOf(100));
 
+        // Teste mesmo titular das contas
+        investimentoCorp.resgatar(BigDecimal.valueOf(50), contaCorp);
+        
+        // Teste valor acima do disponível
+        investimentoCorp.resgatar(BigDecimal.valueOf(150), contaCorp);
+        
+        // Teste titular diferente das contas
+        investimentoCorp.resgatar(BigDecimal.valueOf(50), contaJao);
+        
+        // Teste valor negativo
+        investimentoCorp.resgatar(BigDecimal.valueOf(-50), contaJao);
+
     }
 }
